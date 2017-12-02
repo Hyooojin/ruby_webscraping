@@ -6,13 +6,10 @@ response = HTTParty.get(url)
 text = Nokogiri::HTML(response.body)
 # puts text.css('a')
 
+# 페이지에 들어 있는 링크 목록을 가져온다. 
+=begin
 list = text.css('a').map {|link| link['href']} #람다식
 puts list
-    
+=end
 
-
-# for link in text.css('a') do
-#     if 'href' in link.attrs
-#         pust href
-#     end
-# end
+# 항목 페이지를 가리키는 링크만 가져오기

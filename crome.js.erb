@@ -1,0 +1,7 @@
+//이 문서에서 body  태그 아래에 있는 모든 텍스를 가져온다. 그 결과를 bodyText라는 변수에 담는다.
+var bodyText = document.querySelector('body').innerText;
+//bodyText의 모든 단어를 추출하고, 그 단어의 숫자를 센다. 그 결과를 bodyNum이라는 변수에 담는다.
+var bodyNum = bodyText.split(' ').length;
+//bodyText에서 자신이 알고 있는 단어(the)가 몇번 등장하는지를 알아본다. 그 결과를 myNum이라는 변수에 담는다.
+var myNum = bodyText.match(new RegExp('\\b(the|is|was|of)\\b', 'gi')).length;
+myNum+'/'+bodyNum +'('+ (myNum/bodyNum*100)+'%)';
