@@ -5,9 +5,9 @@ ruby split: [http://blog.naver.com/santa_croce/221153756164](http://blog.naver.c
 a Ruby regular expression editor [http://rubular.com/](http://rubular.com/) <br>
 
 url에서 필요한 정보만 빼오고 싶다. 
-(1) url 가져오기
-(2) 필요한 정보를 가져오기
-(3) http:// .com등 제거
+1. url 가져오기
+2. 필요한 정보를 가져오기
+3. http:// .com등 제거
 
 ## 1. split()
 
