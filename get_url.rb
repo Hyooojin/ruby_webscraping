@@ -7,11 +7,44 @@ require 'httparty'
 # (3) http:// 제거 .com 제거
 
 
-
+# url
 url = "http://cafe.naver.com/jpnstory"
     # 1. '.'으로 나눠서 url을 나눈다.
-url_re = url.to_s.split(/\W+/)    
-puts url_re
+# url_re = 
+url.to_s.split(/\W+/).each do |word|
+   puts word 
+end
+    
+    
+    
+    
+    
+# array = ["com", "http"]
+
+# puts url_re
+# puts "------------"
+
+# url_re.each do |word|
+#   puts word 
+# end
+
+# # I would like to remove matching items from a sentece
+# setence.s
+
+
+# remove word
+
+# bad_words = ["less than", "about"]
+
+# # bad_words.each do |bad|
+# #     puts bad
+# # end
+
+
+
+# if url_re.include('com')
+#     url_re.remove('com')
+# end
 
 # regular expession
     # re 1
