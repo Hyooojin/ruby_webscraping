@@ -2,21 +2,72 @@ require 'nokogiri'
 require 'httparty'
 
 
-# (1) url을 입력받는다.
-# (2) url com 앞에 부분을 받을 수 있도록! 
-# (3) http:// 제거 .com 제거
+# 1. url을 //기호//로 나눈다.
+# 2. 기호를 제거한 url
+# 정규표현식 /\W+/( \W : 영문자와 _ 제외한 문자! <- 반대 ->\w: 영문자와 _ 만!)
+# 3. com. http를 array에 담아서 있으면 url에서 제거
+# 4. co.kr, co.jp, 등 url 패턴 정규 표현식으로 알아보기.
+# 5. url에서 최소한의 정보만 가져오기 
+# url에서 정보를 가져오기에는 url정리가 엉망이다.
+#(1) http 뒤에것 (http는 있을 수도 있고 없을 수도 있고)
+#(2) 제일 처음 /{내용}/ 에 {내용}
+#(3) .com등은 없애기
+#(4) 네이버, 구글, github 중심으로 
 
 
 # url
-url = "http://cafe.naver.com/jpnstory"
+# url = "http://blog.naver.com/hostel_world/221091008465"
 # url = "https://ide.c9.io/jjuya/ruby_scraping"
-
+url = "http://cafe.daum.net/ok1221/9fQk/60376?q=%B5%B5%C4%EC%20%BF%A9%C7%E0"
 # url = "http://rubykr.github.io/rails_guides/"
 # url = "www.yahoo.co.jp/"
 # url = "https://www.google.co.kr/"
 
+################ 최소화해서 가져오기###################################
 
-array = ["com", "http", "https", "io", "ide"]
+puts url#.to_s.split(/\W+/)
+
+puts "======================="
+array = ["google", "naver", "blog", "cafe", "c9", "github", "daum"]
+
+# url.to_s.split(/\W+/).each do |word|
+#     if array.include? word
+#         puts word
+#     else 
+#         puts ("private")
+#     end
+    
+# end
+
+
+# private이 여러개 들어오면 private을 유지하게끔
+# private 이외의 값이 나왔을 때는 그것을 반환, 두개 이상이면 붙이기
+
+findflag = false
+res=""
+array.each do |arr|
+    # puts arr
+    if url.include? arr
+        # puts arr
+        if res == 'private' 
+            res =""
+        end
+        res += arr
+        res += " "
+        findflag = true
+    else 
+        # puts "private"
+        res = "private" if !findflag
+    end
+end
+puts res
+
+    
+
+
+
+#################array에 들어있는 단어 없애기#############################
+# array = ["com", "http", "https", "io", "ide"]
 
 # 1. url을 //기호//로 나눈다.
 # 2. 기호를 제거한 url
@@ -25,30 +76,26 @@ array = ["com", "http", "https", "io", "ide"]
 
 # 4. co.kr, co.jp, 등 url 패턴 정규 표현식으로 알아보기.
 
+# url_word = url.split(/\W+/).delete_if{ |word| array.include?(word)}.join('')
+
+# puts url_word
 
 
 
 
-    # 1. '.'으로 나눠서 url을 나눈다.
-
-# 방법! 
-url_word = url.split(/\W+/).delete_if{ |word| array.include?(word)}.join('')
-
-puts url_word
 
 
 
+
+
+
+####################url 정보 분리 ###### 
 
 # url_re = 
-# url.to_s.split(/\W+/).each do |word|
+#url.to_s.split(/\W+/).each do |word|
 #   puts word 
 # end
     
-    
-    
-    
-    
-
 
 # puts url_re
 # puts "------------"
@@ -57,37 +104,14 @@ puts url_word
 #   puts word 
 # end
 
-# # I would like to remove matching items from a sentece
-# setence.s
 
 
-# remove word
+# regular expession 
 
-# bad_words = ["less than", "about"]
-
-# # bad_words.each do |bad|
-# #     puts bad
-# # end
-
-
-
-# if url_re.include('com')
-#     url_re.remove('com')
-# end
-
-# regular expession
-    # re 1
-    
+# # I would like to remove matching items from a sentece    
 # value = "one,two three:four"
 # a = value.split(/\W+/)
 # puts a
-
 # one tow three four
 
 
-
-
-# response = HTTParty.get(url) # url을 통해서 인터넷정보를 불러오고
-# doc = Nokogiri::HTML(response) # 
-# text = Nokogiri::HTML(response.body)
-# p text.css('title')
