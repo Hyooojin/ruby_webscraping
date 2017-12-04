@@ -9,17 +9,46 @@ require 'httparty'
 
 # url
 url = "http://cafe.naver.com/jpnstory"
+# url = "https://ide.c9.io/jjuya/ruby_scraping"
+
+# url = "http://rubykr.github.io/rails_guides/"
+# url = "www.yahoo.co.jp/"
+# url = "https://www.google.co.kr/"
+
+
+array = ["com", "http", "https", "io", "ide"]
+
+# 1. url을 //기호//로 나눈다.
+# 2. 기호를 제거한 url
+# 정규표현식 /\W+/( \W : 영문자와 _ 제외한 문자! <- 반대 ->\w: 영문자와 _ 만!)
+# 3. com. http를 array에 담아서 있으면 url에서 제거
+
+# 4. co.kr, co.jp, 등 url 패턴 정규 표현식으로 알아보기.
+
+
+
+
+
     # 1. '.'으로 나눠서 url을 나눈다.
+
+# 방법! 
+url_word = url.split(/\W+/).delete_if{ |word| array.include?(word)}.join('')
+
+puts url_word
+
+
+
+
 # url_re = 
-url.to_s.split(/\W+/).each do |word|
-   puts word 
-end
+# url.to_s.split(/\W+/).each do |word|
+#   puts word 
+# end
     
     
     
     
     
-# array = ["com", "http"]
+
 
 # puts url_re
 # puts "------------"
