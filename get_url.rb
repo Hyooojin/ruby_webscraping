@@ -18,10 +18,16 @@ require 'httparty'
 # url
 # url = "http://blog.naver.com/hostel_world/221091008465"
 # url = "https://ide.c9.io/jjuya/ruby_scraping"
-url = "http://cafe.daum.net/ok1221/9fQk/60376?q=%B5%B5%C4%EC%20%BF%A9%C7%E0"
+# url = "http://cafe.daum.net/ok1221/9fQk/60376?q=%B5%B5%C4%EC%20%BF%A9%C7%E0"
 # url = "http://rubykr.github.io/rails_guides/"
-# url = "www.yahoo.co.jp/"
+url = "www.yahoo.co.jp/"
 # url = "https://www.google.co.kr/"
+
+################ 정규표현식 사용해서 ###################################
+
+
+
+
 
 ################ 최소화해서 가져오기###################################
 
